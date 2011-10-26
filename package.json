@@ -10,7 +10,8 @@
   },
   "keywords": ["asset", "js", "css"],
   "dependencies": {
-    "uglify-js": "*"
+    "uglify-js": "*",
+    "aug": "*"
   },
   "devDependencies": {
     "nodeunit": "*"
