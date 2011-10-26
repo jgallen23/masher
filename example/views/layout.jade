@@ -1,0 +1,11 @@
+!!!5
+html
+  head
+    title Example
+    - masher.require('header', 'common', '', ['ui/stylesheets/common.css'])
+    != masher.block('header');
+
+  body
+    != body
+
+    != masher.block('footer');
