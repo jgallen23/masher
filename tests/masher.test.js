@@ -86,7 +86,5 @@ module.exports = testCase({
       t.notEqual(out1, out2);
       t.done();
     });
-
-
   }
 });
