@@ -1,22 +1,68 @@
 var exec = require('child_process').exec;
 var path = require('path');
 var fs = require('fs');
-var testCase = require('nodeunit').testCase;
-var Masher = require('../').Masher;
+var testCase = require('nodeunit');
+var m = require('../');
 
+//MasherAsset
+exports.masherAssetInherit = function(t) {
+  var key = "/test";
+  var mscript = new m.MasherScript(key);
+  t.equal(mscript.key, key);
+  t.done();
+};
+exports.masherScript = function(t) {
+  var s = new m.MasherScript("/test");
+  s.push("/ui/scripts/common.js");
+  t.equals(s.files.length, 1);
+  t.done();
+};
+exports.masherScriptAddSame = function(t) {
+  var s = new m.MasherScript("/test");
+  s.push("/ui/scripts/common.js");
+  s.push("/ui/scripts/common.js");
+  t.equals(s.files.length, 1);
+  t.done();
+};
+exports.masherScriptOutput = function(t) {
+  var s = new m.MasherScript("/test");
+  s.push("/ui/scripts/common.js");
+  var output = s.getOutput();
+  t.notEqual(output.indexOf('script src'), -1);
+  t.done();
+};
+exports.masherScriptCompress = function(t) {
+  var s = new m.MasherScript("/test", {
+    basePath: 'example/public', 
+    compress: true
+  });
+  s.push("/ui/scripts/app.js");
+  var output = s.getOutput();
+  t.notEqual(output.indexOf('script src'), -1);
+  t.notEqual(output.indexOf('compressed'), -1);
+  t.done();
+};
+   
+
+
+
+  /*
 module.exports = testCase({
+  
   blankRequire: function(t) {
     var masher = new Masher();
     masher.require('header', 'common');
     t.done();
   },
   requireTest: function(t) {
-    var masher = new Masher();
-    masher.require('header', 'common', ['ui/scripts/common.js'], ['ui/stylesheets/common.css']);
-    t.equal(masher._styles.header.common.files.length, 1);
+    var masher = new Masher("/test", {
+    });
+    masher.requireScript('/ui/scripts/common.js');
+    masher.requireStyle('/ui/stylesheets/common.css');
+    t.equal(masher._styles.page.files.length, 1);
     t.equal(masher._scripts.header.common.files.length, 1);
     t.done();
-  },
+  }
   addingSameFileTwice: function(t) {
     var masher = new Masher();
     masher.require('header', 'common', ['ui/scripts/common.js']);
@@ -88,3 +134,4 @@ module.exports = testCase({
     });
   }
 });
+  */

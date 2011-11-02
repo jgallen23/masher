@@ -14,7 +14,10 @@ app.configure(function() {
   app.use(express.bodyParser());
   app.use(app.router);
 
-  masher.helpExpress(app);
+  masher.helpExpress(app, {
+    basePath: 'public',
+    compress: false
+  });
 
   app.helpers({
   });

@@ -1,7 +1,7 @@
 {
   "name": "masher",
   "description": "asset util",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "homepage": "https://github.com/jgallen23/node-masher",
   "author": "Greg Allen <@jgaui> (http://jga.me)",
   "repository": {
@@ -10,8 +10,10 @@
   },
   "keywords": ["asset", "js", "css"],
   "dependencies": {
+    "simple-class": "*",
     "uglify-js": "*",
-    "aug": "*"
+    "aug": "*",
+    "str.js": "*"
   },
   "devDependencies": {
     "nodeunit": "*"
