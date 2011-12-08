@@ -1,4 +1,15 @@
-- masher.addScript('/ui/scripts/app.js')
-- masher.addStyle('/ui/stylesheets/app.css')
-p content
+extends layout
+
+prepend head
+  - masher.addScript('/ui/scripts/app.js')
+  - masher.addStyle('/ui/stylesheets/app.css')
+
+block content
+  block content1
+    p content1
+  p content
+  include partial
+
+block append test
+  p body
 

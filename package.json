@@ -16,7 +16,10 @@
     "str.js": "*"
   },
   "devDependencies": {
-    "nodeunit": "*"
+    "nodeunit": "*",
+    "jade": "*",
+    "express": "*",
+    "optimist": "*"
   }
 }
 

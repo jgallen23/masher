@@ -3,9 +3,15 @@ html
   head
     title Example
     != masher.addCommonStyle('/ui/stylesheets/common.css')
+    block head
     != masher.styles();
+      
 
   body
-    != body
-
+    - console.log('body')
+    block content
+      - console.log('content')
+    block test
+      p layout
     != masher.scripts();
+    - console.log('footer')

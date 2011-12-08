@@ -1,6 +1,7 @@
-var express = require("express"),
-    path = require("path"),
-    stylus = require("stylus");
+var express = require("express");
+var path = require("path");
+//require("mongoose");
+//require("express-mongoose");
 
 var argv = require('optimist').argv;
 var masher = require("../");
@@ -9,7 +10,7 @@ var app = express.createServer();
 var port = argv.port || 3000;
 
 app.configure(function() {
-  app.use(express.logger());
+  //app.use(express.logger());
   app.use(express.methodOverride());
   app.use(express.bodyParser());
   app.use(app.router);
@@ -23,7 +24,7 @@ app.configure(function() {
   });
   app.set("views", "" + __dirname + "/views");
   app.set("view options", {
-    layout: "layout" 
+    layout: false//"layout" 
   });
   app.set("view engine", "jade");
 
@@ -45,4 +46,8 @@ app.get("/", function(req, res) {
   });
 });
 
+app.get("/page2", function(req, res) {
+  res.render("page2", {
+  });
+});
 app.listen(port, "0.0.0.0");
