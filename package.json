@@ -8,17 +8,20 @@
     "type": "git",
     "url": "https://jgallen23@github.com/jgallen23/node-masher.git"
   },
-  "keywords": ["asset", "js", "css"],
+  "keywords": ["asset", "js", "css", "minifiy", "compress"],
   "dependencies": {
     "simple-class": "*",
     "uglify-js": "*",
     "aug": "*",
+    "resistance": "*",
+    "slug": "*",
     "str.js": "*"
   },
   "devDependencies": {
-    "nodeunit": "*",
+    "mocha": "*",
     "jade": "*",
     "express": "*",
+    "should": "*",
     "optimist": "*"
   }
 }

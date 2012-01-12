@@ -1,1 +1,4 @@
-module.exports = require('./lib/masher');
+module.exports = {
+  Masher: require('./lib/masher'),
+  helpExpress: require('./lib/expresshelper')
+};

@@ -2,7 +2,7 @@
 html
   head
     title Example
-    != masher.addCommonStyle('/ui/stylesheets/common.css')
+    - masher.addStyle('common', '/stylesheets/common.css')
     block head
     != masher.styles();
       

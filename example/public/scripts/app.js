@@ -1,2 +1,2 @@
 console.log("app.js loaded");
-var a = 1;
+var a=1;

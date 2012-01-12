@@ -1,4 +1,4 @@
 test:
-	./node_modules/.bin/nodeunit tests/masher.test.js
+	./node_modules/.bin/mochA
 
 .PHONY: test

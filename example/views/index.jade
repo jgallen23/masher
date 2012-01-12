@@ -1,12 +1,13 @@
 extends layout
 
 prepend head
-  - masher.addScript('/ui/scripts/app.js')
-  - masher.addStyle('/ui/stylesheets/app.css')
+  - masher.addScript('/scripts/app.js')
+  - masher.addStyle('/stylesheets/app.css')
 
 block content
   p content
   //include partial
-  != partial('partial')
+  include partial
+  //!= partial('partial')
 
 

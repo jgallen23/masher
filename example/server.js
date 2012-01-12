@@ -16,8 +16,16 @@ app.configure(function() {
   app.use(app.router);
 
   masher.helpExpress(app, {
-    basePath: 'public',
-    compress: false
+    assetPath: __dirname+'/public/',
+    compressedPath: __dirname+'/public/compressed/',
+    compress: true,
+    scriptPaths: [
+      'scripts',
+      'vendor'
+    ],
+    stylesheetPaths: [
+      'stylesheets'
+    ]
   });
 
   app.helpers({
