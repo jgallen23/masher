@@ -12,6 +12,7 @@
   "dependencies": {
     "simple-class": "*",
     "uglify-js": "*",
+    "uglifycss": "*",
     "aug": "*",
     "logr": "*",
     "resistance": "*",
