@@ -1,4 +1,4 @@
 test:
-	./node_modules/.bin/mochA
+	./node_modules/.bin/mocha -R tap
 
 .PHONY: test

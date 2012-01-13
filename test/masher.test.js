@@ -1,3 +1,5 @@
+var lg = require('logr')();
+lg._removeAdaptors();
 var should = require('should');
 var path = require('path');
 

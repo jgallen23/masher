@@ -1,3 +1,5 @@
+var lg = require('logr')();
+lg._removeAdaptors();
 var exec = require('child_process').exec;
 var fs = require('fs');
 var should = require('should');

@@ -13,8 +13,8 @@
     "simple-class": "*",
     "uglify-js": "*",
     "aug": "*",
+    "logr": "*",
     "resistance": "*",
-    "slug": "*",
     "str.js": "*"
   },
   "devDependencies": {
