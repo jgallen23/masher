@@ -2,11 +2,11 @@
   "name": "masher",
   "description": "asset util",
   "version": "0.1.0",
-  "homepage": "https://github.com/jgallen23/node-masher",
+  "homepage": "https://github.com/jgallen23/masher",
   "author": "Greg Allen <@jgaui> (http://jga.me)",
   "repository": {
     "type": "git",
-    "url": "https://jgallen23@github.com/jgallen23/node-masher.git"
+    "url": "https://jgallen23@github.com/jgallen23/masher.git"
   },
   "keywords": ["asset", "js", "css"],
   "dependencies": {
@@ -24,6 +24,7 @@
     "stylus": "*",
     "express": "*",
     "jade": "*"
-  }
+  },
+  "bin": "./bin/masher"
 }
 
