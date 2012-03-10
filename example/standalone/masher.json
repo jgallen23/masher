@@ -1,0 +1,23 @@
+{
+  "assetPath": "public",
+  "outputPath": "public/_compressed",
+  "groups": {
+    "common": {
+      "styles": [
+        "app.styl",
+        "module.styl"
+      ],
+      "scripts": [
+        "app.js"
+      ]
+    }
+  },
+  "plugins": {
+    "pre": [
+      "stylus"
+    ],
+    "post": [
+      "hash"
+    ]
+  }
+}

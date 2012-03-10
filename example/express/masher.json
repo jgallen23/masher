@@ -1,0 +1,32 @@
+{
+  "assetPath": "public",
+  "outputPath": "public/_compressed",
+  "stylesPath": "ui/stylesheets",
+  "scriptsPath": "ui/scripts",
+  "groups": {
+    "common": {
+      "styles": [
+        "common.css"
+      ],
+      "scripts": [
+        "external/ender.min.js",
+        "external/live.js"
+      ]
+    },
+    "app": {
+      "styles": [
+        "app.css"
+      ],
+      "scripts": [
+        "app.js"
+      ]
+    }
+  },
+  "plugins": {
+    "pre": [
+    ],
+    "post": [
+      "hash"
+    ]
+  }
+}

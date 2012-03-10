@@ -1,0 +1,37 @@
+#!/usr/bin/env node
+
+var program = require('commander');
+var Masher = require('../lib/masher');
+var path = require('path');
+
+program
+  .version('0.1.0')
+  .option('-n, --nohl', 'Disable syntax highlighting')
+  .option('-p, --preview <port>', 'Start a server to get a live preview', parseInt)
+  .option('-h, --head <file>', 'Custom head file')
+  .option('-f, --foot <file>', 'Custom foot file')
+  .option('-t, --template <file>', 'Jade template file')
+  .usage('[file]')
+
+program.on('--help', function() {
+  console.log('  Examples:');  
+  console.log('');  
+  console.log('    # convert markdown and code blocks to html');
+  console.log('    $ markx blog.md > blog.html');
+});
+
+program.parse(process.argv);
+
+var files = program.args;
+
+
+if (files.length == 1) {
+  var file = files[0];
+  var config = path.join(process.cwd(), file);
+  var masher = new Masher(config);
+  masher.build();
+} else {
+  process.stdout.write(program.helpInformation());
+  program.emit('--help');
+  process.exit(1);
+}

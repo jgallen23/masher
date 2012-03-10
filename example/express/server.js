@@ -1,13 +1,13 @@
 var express = require("express");
 var path = require("path");
-//require("mongoose");
-//require("express-mongoose");
 
-var argv = require('optimist').argv;
-var masher = require("../");
+var Masher = require("../../");
 
 var app = express.createServer();
-var port = argv.port || 3000;
+var port = process.argv[2] || 8001;
+
+
+var masher = new Masher(__dirname + '/masher.json');
 
 app.configure(function() {
   //app.use(express.logger());
@@ -15,12 +15,8 @@ app.configure(function() {
   app.use(express.bodyParser());
   app.use(app.router);
 
-  masher.helpExpress(app, {
-    basePath: 'public',
-    compress: false
-  });
-
   app.helpers({
+    masher: masher.helper()
   });
   app.set("views", "" + __dirname + "/views");
   app.set("view options", {
@@ -37,6 +33,7 @@ app.configure("development", function() {
   }));
 });
 app.configure("production", function() {
+  masher.build();
   app.use(express.errorHandler());
 });
 

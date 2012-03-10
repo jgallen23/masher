@@ -1,0 +1,12 @@
+!!!5
+html
+  head
+    title Example
+    block head
+      != masher.addStyle('common');
+      
+
+  body
+    block content
+    != masher.addScript('common');
+    block scripts
