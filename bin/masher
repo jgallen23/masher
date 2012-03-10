@@ -3,14 +3,11 @@
 var program = require('commander');
 var Masher = require('../lib/masher');
 var path = require('path');
+var fs = require('fs');
 
 program
   .version('0.1.0')
-  .option('-n, --nohl', 'Disable syntax highlighting')
-  .option('-p, --preview <port>', 'Start a server to get a live preview', parseInt)
-  .option('-h, --head <file>', 'Custom head file')
-  .option('-f, --foot <file>', 'Custom foot file')
-  .option('-t, --template <file>', 'Jade template file')
+  .option('-m, --mapping <file>', 'Save mapping file')
   .usage('[file]')
 
 program.on('--help', function() {
@@ -24,12 +21,26 @@ program.parse(process.argv);
 
 var files = program.args;
 
-
 if (files.length == 1) {
   var file = files[0];
   var config = path.join(process.cwd(), file);
-  var masher = new Masher(config);
-  masher.build();
+  var masher = new Masher(config, false);
+  masher.build(function() {
+    console.log('Generated:');
+    for (var key in masher.config.groups) {
+      var group = masher.config.groups[key];
+      if (group.scriptOut)
+        console.log(key+': '+group.scriptOut);
+      if (group.styleOut)
+        console.log(key+': '+group.styleOut);
+    }
+    if (program.mapping) {
+      var map = masher.getMapping();
+      fs.writeFile(program.mapping, JSON.stringify(map), function(err) {
+        if (err) throw err;
+      });
+    }
+  });
 } else {
   process.stdout.write(program.helpInformation());
   program.emit('--help');
