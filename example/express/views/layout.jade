@@ -3,10 +3,10 @@ html
   head
     title Example
     block head
-      != masher.addStyle('common');
+      != masher.style('common');
       
 
   body
     block content
-    != masher.addScript('common');
+    != masher.script('common');
     block scripts

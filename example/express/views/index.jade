@@ -1,12 +1,12 @@
 extends layout
 
 append head
-  != masher.addStyle('app')
+  != masher.style('app')
 
 block content
   p content
 
 append scripts
-  != masher.addScript('app')
+  != masher.script('app')
 
 
