@@ -6,16 +6,16 @@ var path = require('path');
 var fs = require('fs');
 
 program
-  .version('0.1.1')
+  .version(JSON.parse(fs.readFileSync(__dirname + '/../package.json', 'utf8')).version)
   .option('-m, --mapping <file>', 'Save mapping file')
   .usage('[file]')
 
-#program.on('--help', function() {
-  #console.log('  Examples:');  
-  #console.log('');  
-  #console.log('    # convert markdown and code blocks to html');
-  #console.log('    $ markx blog.md > blog.html');
-#});
+//program.on('--help', function() {
+  //console.log('  Examples:');  
+  //console.log('');  
+  //console.log('    # convert markdown and code blocks to html');
+  //console.log('    $ markx blog.md > blog.html');
+//});
 
 program.parse(process.argv);
 
