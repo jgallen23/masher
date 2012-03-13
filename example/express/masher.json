@@ -9,13 +9,12 @@
         "common.css"
       ],
       "scripts": [
-        "external/ender.min.js",
-        "external/live.js"
+        "external/ender.min.js"
       ]
     },
     "app": {
       "styles": [
-        "app.css"
+        "app.styl"
       ],
       "scripts": [
         "app.js"
@@ -24,6 +23,7 @@
   },
   "plugins": {
     "pre": [
+      "stylus"
     ],
     "post": [
       "hash"

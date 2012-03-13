@@ -24,6 +24,7 @@ app.configure(function() {
   });
   app.set("view engine", "jade");
 
+  app.use(masher.middleware());
   app.use(express.static(__dirname + "/public"));
 });
 app.configure("development", function() {
