@@ -12,6 +12,7 @@
   "dependencies": {
     "aug": "*",
     "commander": "*",
+    "cjson": "*",
     "uglify-js": "*",
     "uglifycss": "*",
     "resistance": "*",

@@ -2,6 +2,7 @@
   "assetPath": "public",
   "outputPath": "public/_compressed",
   "groups": {
+    //common stuff
     "common": {
       "styles": [
         "app.styl",
