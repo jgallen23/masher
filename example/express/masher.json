@@ -13,11 +13,22 @@
       ]
     },
     "app": {
+      "groups": [
+        "module"
+      ],
       "styles": [
         "app.styl"
       ],
       "scripts": [
         "app.js"
+      ]
+    },
+    "module": {
+      "styles": [
+        "module.styl"
+      ],
+      "scripts": [
+        "module.js"
       ]
     }
   },
