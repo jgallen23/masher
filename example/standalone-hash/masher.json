@@ -18,6 +18,7 @@
       "stylus"
     ],
     "post": [
+      "compress",
       "hash"
     ]
   }
