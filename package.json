@@ -23,6 +23,7 @@
     "mocha": "*",
     "chai": "*",
     "stylus": "*",
+    "less": "*",
     "express": "*",
     "jade": "*"
   },

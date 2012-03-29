@@ -1,0 +1,19 @@
+{
+  "assetPath": "public",
+  "outputPath": "public/_compressed",
+  "groups": {
+    "common": {
+      "styles": [
+        "app.less"
+      ]
+    }
+  },
+  "plugins": {
+    "pre": [
+      "less"
+    ],
+    "post": [
+      "hash"
+    ]
+  }
+}
