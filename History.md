@@ -1,4 +1,9 @@
 
+0.1.11 / 2012-03-29 
+==================
+
+  * fixed less parser, added middleware support for less
+
 0.1.10 / 2012-03-29 
 ==================
 
