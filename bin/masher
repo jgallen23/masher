@@ -30,9 +30,9 @@ if (files.length == 1) {
     for (var key in masher.config.groups) {
       var group = masher.config.groups[key];
       if (group.scriptOut)
-        console.log(key+': '+group.scriptOut);
+        console.log(key + ': ' + group.scriptOut + ' (' + group.scriptSize + 'kb)');
       if (group.styleOut)
-        console.log(key+': '+group.styleOut);
+        console.log(key + ': ' + group.styleOut + ' (' + group.styleSize + 'kb)');
     }
     if (program.mapping) {
       var map = masher.getMapping();
