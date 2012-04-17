@@ -1,4 +1,9 @@
 
+0.2.0 / 2012-04-17 
+==================
+
+  * read mapping file (if exists) to speed up server startup time
+
 0.1.14 / 2012-04-11 
 ==================
 
