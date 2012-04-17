@@ -24,17 +24,20 @@ app.configure(function() {
   });
   app.set("view engine", "jade");
 
-  app.use(masher.middleware());
-  app.use(express.static(__dirname + "/public"));
 });
 app.configure("development", function() {
+  app.use(masher.middleware());
+  app.use(express.static(__dirname + "/public"));
   app.use(express.errorHandler({
     dumpExceptions: true,
     showStack: true
   }));
 });
 app.configure("production", function() {
-  masher.build();
+  app.use(express.static(__dirname + "/public"));
+  masher.build(function() {
+    console.log("Masher build complete");
+  });
   app.use(express.errorHandler());
 });
 
