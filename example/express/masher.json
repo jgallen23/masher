@@ -37,6 +37,7 @@
       "stylus"
     ],
     "post": [
+      "compress",
       "hash"
     ]
   }
