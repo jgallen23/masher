@@ -1,4 +1,10 @@
 
+0.2.2 / 2012-04-20 
+==================
+
+  * inheritance example
+  * put inherited groups before group's assets
+
 0.2.1 / 2012-04-18 
 ==================
 
