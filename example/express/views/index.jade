@@ -1,13 +1,15 @@
 extends layout
 
 append head
-  != masher.style('app')
+  //- this will be inlined
+  != masher.style('app', true)
 
 block content
   p content
   div#module this is a module
 
 append scripts
-  != masher.script('app')
+  //- this will be inlined
+  != masher.script('app', true)
 
 

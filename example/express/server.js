@@ -33,12 +33,16 @@ app.configure("development", function() {
     showStack: true
   }));
 });
+
 app.configure("production", function() {
   app.use(express.static(__dirname + "/public"));
   masher.build(function() {
     console.log("Masher build complete");
   });
-  app.use(express.errorHandler());
+  app.use(express.errorHandler({
+    dumpExceptions: true,
+    showStack: true
+  }));
 });
 
 
