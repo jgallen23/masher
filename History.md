@@ -1,4 +1,11 @@
 
+0.3.0 / 2012-04-24 
+==================
+
+  * caching on dev middleware
+  * refactored paths
+  * style('blah', true) to render inline
+
 0.2.3 / 2012-04-21 
 ==================
 
