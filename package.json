@@ -1,12 +1,12 @@
 {
   "name": "masher",
   "description": "asset util",
-  "version": "0.4.1",
-  "homepage": "https://github.com/jgallen23/masher",
+  "version": "0.5.1",
+  "homepage": "https://github.com/chrisabrams/masher.git",
   "author": "Greg Allen <@jgaui> (http://jga.me)",
   "repository": {
     "type": "git",
-    "url": "https://jgallen23@github.com/jgallen23/masher.git"
+    "url": "https://github.com/chrisabrams/masher.git"
   },
   "keywords": ["asset", "js", "css"],
   "dependencies": {
@@ -29,4 +29,3 @@
   },
   "bin": "./bin/masher"
 }
-
