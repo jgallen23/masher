@@ -15,7 +15,7 @@
     "cjson": "*",
     "uglify-js": "*",
     "uglifycss": "*",
-    "resistance": "*",
+    "resistance": "2.0.0alpha1",
     "mkdirp": "*",
     "strf": "*"
   },
@@ -28,6 +28,7 @@
     "express": "*",
     "jade": "*"
   },
-  "bin": "./bin/masher"
+  "bin": "./bin/masher",
+  "main": "./lib/masher"
 }
 
