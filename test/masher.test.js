@@ -26,7 +26,7 @@ masher({
      hash: true,
      version: 'v1.2',
      out: __dirname + '/public/_compressed'
-}, function(err, contents, filename) {
+}, function(err, results) {
 })
 */
 
@@ -42,14 +42,40 @@ suite('Masher', function() {
     fixturePath + 'styleb.css'
   ];
 
+  suite('init', function() {
+    test('must pass in object or array');
+    test('must pass in files');
+    test('pass in array', function(done) {
+
+      masher([{ 
+        files: scriptFiles 
+      }, {
+        files: styleFiles
+      }], function(err, scriptResult, styleResult) {
+        //this gets set as array of results, with first being err
+        assert.equal(this.length, 3);
+
+        assert.ok(!err);
+        assert.equal(scriptResult.source, readFixture('ab'));
+        assert.equal(scriptResult.filename, 'mashed.js');
+
+        assert.equal(styleResult.source, readFixture('styleab', '.css'));
+        assert.equal(styleResult.filename, 'mashed.css');
+
+        done();
+      })
+
+    });
+  });
+
   suite('concat', function() {
     test('combining two scripts', function(done) {
       masher({ 
         files: scriptFiles 
-      }, function(err, contents, filename) {
-        assert.equal(contents, readFixture('ab'));
+      }, function(err, results) {
+        assert.equal(results.source, readFixture('ab'));
         //default filename is mashed.[js|css]
-        assert.equal(filename, 'mashed.js');
+        assert.equal(results.filename, 'mashed.js');
         done();
       })
     });
@@ -57,10 +83,10 @@ suite('Masher', function() {
     test('combining two styles', function(done) {
       masher({ 
         files: styleFiles 
-      }, function(err, contents, filename) {
-        assert.equal(contents, readFixture('styleab', '.css'));
+      }, function(err, results) {
+        assert.equal(results.source, readFixture('styleab', '.css'));
         //default filename is mashed.[js|css]
-        assert.equal(filename, 'mashed.css');
+        assert.equal(results.filename, 'mashed.css');
         done();
       })
     });
@@ -73,8 +99,8 @@ suite('Masher', function() {
       masher({ 
         files: scriptFiles,
         minify: true
-      }, function(err, contents, filename) {
-        assert.equal(contents+'\n', readFixture('ab.min'));
+      }, function(err, results) {
+        assert.equal(results.source+'\n', readFixture('ab.min'));
         done();
       })
     });
@@ -83,8 +109,8 @@ suite('Masher', function() {
       masher({ 
         files: styleFiles,
         minify: true
-      }, function(err, contents, filename) {
-        assert.equal(contents+'\n', readFixture('styleab.min', '.css'));
+      }, function(err, results) {
+        assert.equal(results.source+'\n', readFixture('styleab.min', '.css'));
         done();
       })
     });
@@ -95,8 +121,8 @@ suite('Masher', function() {
       masher({ 
         name: 'app',
         files: scriptFiles,
-      }, function(err, contents, filename) {
-        assert.equal(filename, 'app.js');
+      }, function(err, results) {
+        assert.equal(results.filename, 'app.js');
         done();
       })
     });
@@ -106,8 +132,8 @@ suite('Masher', function() {
         name: 'app',
         minify: true,
         files: scriptFiles,
-      }, function(err, contents, filename) {
-        assert.equal(filename, 'app.min.js');
+      }, function(err, results) {
+        assert.equal(results.filename, 'app.min.js');
         done();
       })
     });
@@ -117,8 +143,8 @@ suite('Masher', function() {
         name: 'app',
         version: '1.2',
         files: scriptFiles,
-      }, function(err, contents, filename) {
-        assert.equal(filename, 'app-1.2.js');
+      }, function(err, results) {
+        assert.equal(results.filename, 'app-1.2.js');
         done();
       })
     });
@@ -129,8 +155,8 @@ suite('Masher', function() {
         minify: true,
         version: '1.2',
         files: scriptFiles,
-      }, function(err, contents, filename) {
-        assert.equal(filename, 'app-1.2.min.js');
+      }, function(err, results) {
+        assert.equal(results.filename, 'app-1.2.min.js');
         done();
       })
     });
@@ -140,8 +166,8 @@ suite('Masher', function() {
         name: 'app',
         hash: true,
         files: scriptFiles,
-      }, function(err, contents, filename) {
-        assert.equal(filename, 'app-174a0b46.js');
+      }, function(err, results) {
+        assert.equal(results.filename, 'app-174a0b46.js');
         done();
       });
     });
@@ -152,8 +178,8 @@ suite('Masher', function() {
         hash: true,
         minify: true,
         files: scriptFiles,
-      }, function(err, contents, filename) {
-        assert.equal(filename, 'app-84e27e42.min.js');
+      }, function(err, results) {
+        assert.equal(results.filename, 'app-84e27e42.min.js');
         done();
       });
     });
@@ -166,10 +192,10 @@ suite('Masher', function() {
         name: 'app',
         files: scriptFiles,
         out: '/tmp'
-      }, function(err, contents, filename) {
+      }, function(err, results) {
 
         var expectedFilename = '/tmp/app.js';
-        assert.equal(filename, expectedFilename);
+        assert.equal(results.filename, expectedFilename);
         assert.equal(existsSync(expectedFilename), true);
         fs.unlinkSync(expectedFilename);
         done();
@@ -186,9 +212,9 @@ suite('Masher', function() {
           fixturePath + 'stylec.styl',
           fixturePath + 'styleb.css',
         ],
-      }, function(err, contents, filename) {
+      }, function(err, results) {
 
-        assert.equal(contents, readFixture('stylecb', '.css'));
+        assert.equal(results.source, readFixture('stylecb', '.css'));
         done();
 
       })
