@@ -11,10 +11,10 @@
   "keywords": ["asset", "js", "css"],
   "dependencies": {
     "aug": "*",
-    "commander": "*",
     "js-yaml": "*",
     "uglify-js": "*",
     "uglifycss": "*",
+    "optimist": "*",
     "resistance": "2.0.0alpha1",
     "mkdirp": "*",
     "strf": "*"
@@ -25,7 +25,7 @@
     "nib": "*",
     "less": "*"
   },
-  "bin": "./bin/masher",
+  "bin": { "masher": "./bin/masher.js" },
   "main": "./lib/masher"
 }
 

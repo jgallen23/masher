@@ -1,13 +1,14 @@
 mash:
   - 
     files:
-      - a.js
-      - b.js
+      - test/fixtures/a.js
+      - test/fixtures/b.js
     version: v1.1
   -
     files:
-      - stylea.css
-      - styleb.css
+      - test/fixtures/stylea.css
+      - test/fixtures/styleb.css
 options:
   compress: true
   version: v1
+  out: '.'
