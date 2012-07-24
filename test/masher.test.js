@@ -1,7 +1,3 @@
-require('console-trace')({
-    always: true,
-})
-
 var assert = require('assert');
 var masher = require('../');
 var fs = require('fs');
