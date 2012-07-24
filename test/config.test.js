@@ -48,12 +48,12 @@ suite('config', function() {
       assert.equal(obj[0].version, 'v1.1');
       assert.equal(obj[0].compress, true);
       assert.equal(obj[0].files.length, 2);
-      assert.equal(obj[0].files[0], 'a.js');
+      assert.equal(obj[0].files[0], 'test/fixtures/a.js');
 
       assert.equal(obj[1].version, 'v1');
       assert.equal(obj[1].compress, true);
       assert.equal(obj[1].files.length, 2);
-      assert.equal(obj[1].files[0], 'stylea.css');
+      assert.equal(obj[1].files[0], 'test/fixtures/stylea.css');
       done();
     });
 

@@ -10,14 +10,12 @@
   },
   "keywords": ["asset", "js", "css"],
   "dependencies": {
-    "aug": "*",
-    "js-yaml": "*",
-    "uglify-js": "*",
-    "uglifycss": "*",
-    "optimist": "*",
-    "resistance": "2.0.0alpha1",
-    "mkdirp": "*",
-    "strf": "*"
+    "aug": "0.0.5",
+    "js-yaml": "1.0.1",
+    "uglify-js": "1.3.2",
+    "uglifycss": "0.0.5",
+    "optimist": "0.3.4",
+    "resistance": "2.0.0alpha1"
   },
   "devDependencies": {
     "mocha": "*",
