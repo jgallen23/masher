@@ -21,12 +21,9 @@
   },
   "devDependencies": {
     "mocha": "*",
-    "chai": "*",
     "stylus": "*",
     "nib": "*",
-    "less": "*",
-    "express": "*",
-    "jade": "*"
+    "less": "*"
   },
   "bin": "./bin/masher",
   "main": "./lib/masher"
