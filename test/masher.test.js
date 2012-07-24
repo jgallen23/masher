@@ -39,7 +39,6 @@ suite('Masher', function() {
   ];
 
   suite('init', function() {
-    test('must pass in object or array');
     test('must pass in files');
     test('pass in array', function(done) {
 
@@ -61,6 +60,13 @@ suite('Masher', function() {
         done();
       })
 
+    });
+    test('pass in string', function(done) {
+      masher(fixturePath + 'config.yaml', function(err, results) {
+        assert.equal(results.source, readFixture('ab'));
+        assert.equal(results.filename, 'mashed.js');
+        done();
+      });
     });
   });
 

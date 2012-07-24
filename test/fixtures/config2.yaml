@@ -1,0 +1,13 @@
+mash:
+  - 
+    files:
+      - a.js
+      - b.js
+    version: v1.1
+  -
+    files:
+      - stylea.css
+      - styleb.css
+options:
+  compress: true
+  version: v1
