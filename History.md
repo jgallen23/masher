@@ -1,4 +1,17 @@
 
+0.5.0alpha1 / 2012-07-25 
+==================
+
+  * froze deps, fixed test
+  * cli
+  * pass in config file, separated out mash.js and set.js
+  * removed console-trace from unit tests
+  * removed unused deps
+  * able to pass in array of objects, changed return to be an object
+  * make test
+  * complete rewrite, added tests
+  * nib support
+
 0.4.2 / 2012-06-29 
 ==================
 
