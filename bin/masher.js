@@ -41,6 +41,12 @@ var opt = require('optimist')
     describe: 'Output directory',
     default: process.cwd()
   })
+  .options('w', {
+    alias: 'watch',
+    describe: 'Watch files for changes',
+    default: false,
+    type: 'boolean'
+  })
   .options('h', {
     alias: 'help',
     descripe: 'Show help info'
@@ -64,8 +70,10 @@ var mash = function(obj) {
       console.log(item.filename);
     }
   });
+  if (argv.watch) {
+    watch(obj);
+  }
 }
-
 
 if (argv._.length != 0) {
   config(argv._[0], function(err, arrObj) {
@@ -82,4 +90,37 @@ if (argv._.length != 0) {
   mash(obj);
 }
 
+//watch functionality
+var watch = function(arrObj) {
+ 
+  var timeout;
 
+  var watchFile = function(obj, file) {
+    fs.watch(file, function() {
+      if (timeout) {
+        clearTimeout(timeout)
+      }
+      timeout = setTimeout(function() {
+        console.log('---');
+        console.log('File Changed: '+file);
+        console.log('');
+        mash([obj]);
+
+        //re-watch
+        setTimeout(function() {
+          watchFile(obj, file);
+        }, 100);
+      }, 700);
+    });
+  }
+
+  var watchObj = function(obj) {
+    obj.files.forEach(function(item) {
+      watchFile(obj, item);
+    });
+  }
+  arrObj.forEach(watchObj);
+
+  argv.watch = false;
+
+}
