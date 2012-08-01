@@ -1,4 +1,11 @@
 
+0.5.0alpha2 / 2012-08-01 
+==================
+
+  * added watch support
+  * able to override config file with arguments passed in
+  * refactored preprocessors a little
+
 0.5.0alpha1 / 2012-07-25 
 ==================
 
