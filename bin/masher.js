@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 var aug = require('aug');
 var masher = require('../');
+var config = require('../lib/config');
 var defaults = require('../lib/defaults');
 var fs = require('fs');
 
@@ -51,21 +52,34 @@ if (argv.help) {
   return opt.showHelp();
 }
 
-var obj;
-if (argv._.length != 0) {
-  obj = argv._[0];
-} else {
-  obj = aug(true, {}, defaults, argv);
+
+var mash = function(obj) {
+  masher(obj, function(err) {
+    if (err) {
+      throw err;
+    }
+    console.log('Mashed:');
+    for (var i = 1, c = this.length; i < c; i++) {
+      var item = this[i];
+      console.log(item.filename);
+    }
+  });
 }
 
-masher(obj, function(err) {
-  if (err) {
-    throw err;
-  }
-  console.log('Mashed:');
-  for (var i = 1, c = this.length; i < c; i++) {
-    var item = this[i];
-    console.log(item.filename);
-  }
-});
+
+if (argv._.length != 0) {
+  config(argv._[0], function(err, arrObj) {
+    var newArr = [];
+
+    arrObj.forEach(function(item) {
+      newArr.push(aug(true, {}, defaults, item, argv));
+    });
+
+    mash(newArr);
+  });
+} else {
+  var obj = aug(true, {}, defaults, argv);
+  mash(obj);
+}
+
 
