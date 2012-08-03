@@ -1,4 +1,10 @@
 
+0.5.0alpha3 / 2012-08-03 
+==================
+
+  * fixed issues with cli args and passing in config file
+  * remove <feff>
+
 0.5.0alpha2 / 2012-08-01 
 ==================
 
