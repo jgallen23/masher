@@ -1,4 +1,9 @@
 
+0.5.0alpha4 / 2012-08-03 
+==================
+
+  * read stylus imports when watching files
+
 0.5.0alpha3 / 2012-08-03 
 ==================
 
