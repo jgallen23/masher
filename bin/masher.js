@@ -76,14 +76,8 @@ var mash = function(obj) {
 }
 
 if (argv._.length != 0) {
-  config(argv._[0], function(err, arrObj) {
-    var newArr = [];
-
-    arrObj.forEach(function(item) {
-      newArr.push(aug(true, {}, defaults, item, argv));
-    });
-
-    mash(newArr);
+  config(argv._[0], argv, function(err, arrObj) {
+    mash(arrObj);
   });
 } else {
   var obj = aug(true, {}, defaults, argv);

@@ -9,6 +9,4 @@ mash:
       - test/fixtures/stylea.css
       - test/fixtures/styleb.css
 options:
-  minify: true
   version: v1
-  out: '.'
