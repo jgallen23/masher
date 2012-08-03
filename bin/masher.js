@@ -4,6 +4,7 @@ var masher = require('../');
 var config = require('../lib/config');
 var defaults = require('../lib/defaults');
 var fs = require('fs');
+var findImports = require('../lib/utils/find-imports');
 
 var version = JSON.parse(fs.readFileSync(__dirname + '/../package.json', 'utf8')).version
 
@@ -16,7 +17,8 @@ var opt = require('optimist')
   })
   .options('f', {
     alias: 'files',
-    describe: 'List of files to mash [file.js,file.js,file.js]'
+    describe: 'List of files to mash [file.js,file.js,file.js]',
+    type: 'string'
   })
   .options('m', {
     alias: 'minify',
@@ -58,32 +60,6 @@ if (argv.help) {
   return opt.showHelp();
 }
 
-
-var mash = function(obj) {
-  masher(obj, function(err) {
-    if (err) {
-      throw err;
-    }
-    console.log('Mashed:');
-    for (var i = 1, c = this.length; i < c; i++) {
-      var item = this[i];
-      console.log(item.filename);
-    }
-  });
-  if (argv.watch) {
-    watch(obj);
-  }
-}
-
-if (argv._.length != 0) {
-  config(argv._[0], argv, function(err, arrObj) {
-    mash(arrObj);
-  });
-} else {
-  var obj = aug(true, {}, defaults, argv);
-  mash(obj);
-}
-
 //watch functionality
 var watch = function(arrObj) {
  
@@ -110,7 +86,14 @@ var watch = function(arrObj) {
 
   var watchObj = function(obj) {
     obj.files.forEach(function(item) {
+      console.log('Watching '+item);
       watchFile(obj, item);
+      findImports(item, function(err, imports) {
+        imports.forEach(function(file) {
+          console.log('Watching '+file);
+          watchFile(obj, file);
+        });
+      });
     });
   }
   arrObj.forEach(watchObj);
@@ -118,3 +101,32 @@ var watch = function(arrObj) {
   argv.watch = false;
 
 }
+
+var mash = function(obj) {
+  masher(obj, function(err) {
+    if (err) {
+      throw err;
+    }
+    console.log('Mashed:');
+    for (var i = 1, c = this.length; i < c; i++) {
+      var item = this[i];
+      console.log(item.filename);
+    }
+  });
+  if (argv.watch) {
+    watch(obj);
+  }
+}
+if (argv.files) {
+  argv.files = argv.files.split(',');
+}
+
+if (argv._.length != 0) {
+  config(argv._[0], argv, function(err, arrObj) {
+    mash(arrObj);
+  });
+} else {
+  var obj = aug(true, {}, defaults, argv);
+  mash([obj]);
+}
+
