@@ -1,4 +1,15 @@
 
+0.5.0 / 2012-08-10 
+==================
+
+  * added blank readme
+  * removed old examples
+  * print out size of file
+  * be able to force filename with filename option
+  * fixed test so path.existsSync warning wouldn't get called
+  * removed nib support
+  * throw if minification fails, need to fix in resistance
+
 0.5.0alpha4 / 2012-08-03 
 ==================
 
