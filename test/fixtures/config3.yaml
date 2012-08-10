@@ -1,0 +1,12 @@
+mash:
+  - 
+    files:
+      - test/fixtures/a.js
+      - test/fixtures/b.js
+    version: v1.1
+  -
+    files:
+      - test/fixtures/stylea.css
+      - test/fixtures/styleb.css
+options:
+  version: v1

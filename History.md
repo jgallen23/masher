@@ -1,4 +1,46 @@
 
+0.5.0 / 2012-08-10 
+==================
+
+  * added blank readme
+  * removed old examples
+  * print out size of file
+  * be able to force filename with filename option
+  * fixed test so path.existsSync warning wouldn't get called
+  * removed nib support
+  * throw if minification fails, need to fix in resistance
+
+0.5.0alpha4 / 2012-08-03 
+==================
+
+  * read stylus imports when watching files
+
+0.5.0alpha3 / 2012-08-03 
+==================
+
+  * fixed issues with cli args and passing in config file
+  * remove <feff>
+
+0.5.0alpha2 / 2012-08-01 
+==================
+
+  * added watch support
+  * able to override config file with arguments passed in
+  * refactored preprocessors a little
+
+0.5.0alpha1 / 2012-07-25 
+==================
+
+  * froze deps, fixed test
+  * cli
+  * pass in config file, separated out mash.js and set.js
+  * removed console-trace from unit tests
+  * removed unused deps
+  * able to pass in array of objects, changed return to be an object
+  * make test
+  * complete rewrite, added tests
+  * nib support
+
 0.4.2 / 2012-06-29 
 ==================
 
