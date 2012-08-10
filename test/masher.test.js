@@ -197,6 +197,18 @@ suite('Masher', function() {
         done();
       });
     });
+
+    test('filename set', function(done) {
+      masher({
+        filename: 'app',
+        hash: true,
+        minify: true,
+        files: scriptFiles,
+      }, function(err, results) {
+        assert.equal(results.filename, 'app.js');
+        done();
+      });
+    });
   });
 
   suite('out', function() {
