@@ -116,6 +116,18 @@ suite('Masher', function() {
         done();
       })
     });
+
+    //TODO: fix this
+    test('minify bad code', function(done) {
+      masher({ 
+        files: [fixturePath + 'bad-code.js'],
+        minify: true
+      }, function(err, results) {
+        assert.ok(err);
+        done();
+      })
+      
+    });
   });
 
   suite('filename', function() {
