@@ -2,7 +2,7 @@ var assert = require('assert');
 var masher = require('../');
 var fs = require('fs');
 var path = require('path');
-var existsSync = path.existsSync || fs.existsSync;
+var existsSync = fs.existSync || path.existsSync;
 
 var fixturePath = __dirname + '/fixtures/';
 
