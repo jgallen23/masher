@@ -3,6 +3,7 @@ var aug = require('aug');
 var masher = require('../');
 var config = require('../lib/config');
 var defaults = require('../lib/defaults');
+var size = require('../lib/utils/size');
 var fs = require('fs');
 var findImports = require('../lib/utils/find-imports');
 
@@ -110,7 +111,7 @@ var mash = function(obj) {
     console.log('Mashed:');
     for (var i = 1, c = this.length; i < c; i++) {
       var item = this[i];
-      console.log(item.filename);
+      console.log('%s (%skb)', item.filename, size(item.source));
     }
   });
   if (argv.watch) {
