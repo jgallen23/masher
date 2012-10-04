@@ -31,5 +31,8 @@
   "bin": {
     "masher": "./bin/masher.js"
   },
-  "main": "./lib/masher"
+  "main": "./lib/masher",
+  "scripts": {
+    "test": "mocha"
+  }
 }
