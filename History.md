@@ -1,5 +1,10 @@
 
-0.6.0 / 2012-09-27 
+0.6.0 / 2012-10-05 
+==================
+
+  * option to show copyright when minifying
+
+0.5.3 / 2012-09-27 
 ==================
 
   * add support for file globs
