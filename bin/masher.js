@@ -6,6 +6,7 @@ var defaults = require('../lib/defaults');
 var size = require('../lib/utils/size');
 var fs = require('fs');
 var findImports = require('../lib/utils/find-imports');
+var glob = require('glob');
 
 var version = JSON.parse(fs.readFileSync(__dirname + '/../package.json', 'utf8')).version
 
@@ -62,11 +63,23 @@ if (argv.help) {
 }
 
 //watch functionality
+var watching = [];
 var watch = function(arrObj) {
  
   var timeout;
 
   var watchFile = function(obj, file) {
+    if (watching.indexOf(file) != -1) {
+      return;
+    }
+    findImports(file, function(err, imports) {
+      imports.forEach(function(file) {
+        console.log('Watching '+file);
+        watchFile(obj, file);
+      });
+    });
+    watching.push(file);
+    console.log('Watching '+file);
     fs.watch(file, function() {
       if (timeout) {
         clearTimeout(timeout)
@@ -87,11 +100,8 @@ var watch = function(arrObj) {
 
   var watchObj = function(obj) {
     obj.files.forEach(function(item) {
-      console.log('Watching '+item);
-      watchFile(obj, item);
-      findImports(item, function(err, imports) {
-        imports.forEach(function(file) {
-          console.log('Watching '+file);
+      glob(item, function(err, files) {
+        files.forEach(function(file) {
           watchFile(obj, file);
         });
       });
