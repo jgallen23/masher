@@ -74,7 +74,6 @@ var watch = function(arrObj) {
     }
     findImports(file, function(err, imports) {
       imports.forEach(function(file) {
-        console.log('Watching '+file);
         watchFile(obj, file);
       });
     });
@@ -92,6 +91,7 @@ var watch = function(arrObj) {
 
         //re-watch
         setTimeout(function() {
+          watching.splice(watching.indexOf(file), 1);
           watchFile(obj, file);
         }, 100);
       }, 700);
